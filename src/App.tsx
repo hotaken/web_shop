@@ -1,8 +1,7 @@
 import React from 'react';
 
-function App() {
-  return ( <div className="App">Working!</div>
-  );
-}
+const App = (): JSX.Element => {
+    return <div className="App">Working!</div>;
+};
 
 export default App;
