@@ -1,12 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// primary main - header
+// primary light - icons color
+// secondary main - footer bg, buttons bg
+// secondary light -
+
+const theme = createMuiTheme({
+    palette: {
+        primary: { main: '#fc5404', light: '#132c33' },
+        secondary: { main: '#d8e3e7', light: '#51c4d3' },
+    },
+});
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <ThemeProvider theme={theme}>
+            <App />
+        </ThemeProvider>
     </React.StrictMode>,
     document.getElementById('root'),
 );
