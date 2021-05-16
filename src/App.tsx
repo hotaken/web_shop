@@ -10,7 +10,10 @@ const App = (): JSX.Element => {
 
     return (
         <div className="App">
-            <Layout>{Routes()}</Layout>
+            <Layout>
+                {/* Routes */}
+                {Routes()}
+            </Layout>
         </div>
     );
 };
