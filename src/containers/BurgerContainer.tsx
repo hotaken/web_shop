@@ -1,19 +1,8 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Button, createStyles, makeStyles, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
-import Bacon from '../components/Ingredients/Bacon';
-import Bread from '../components/Ingredients/Bread';
-import Cheese from '../components/Ingredients/Cheese';
-import Cucumber from '../components/Ingredients/Cucumber';
+import Burger from '../components/Burger/Burger';
 
 type IngredientType = 'bacon' | 'cheese' | 'cucumber';
-
-const ingredientsMap: { [key in IngredientType]: JSX.Element } = {
-    bacon: <Bacon />,
-    cheese: <Cheese />,
-    cucumber: <Cucumber />,
-};
 
 const useStyles = makeStyles((theme) =>
     createStyles({
@@ -81,16 +70,6 @@ const BurgerContainer = (): JSX.Element => {
         });
     };
 
-    const IngredientsArray: JSX.Element[] = [];
-    ingredients.forEach((ingredient, index) => {
-        const ingredientComp = (
-            <div key={`${ingredient + index}`} onClick={() => onDeleteIngredientHandler(index)}>
-                {ingredientsMap[ingredient]}
-            </div>
-        );
-        IngredientsArray.push(ingredientComp);
-    });
-
     return (
         <div className={classes.root}>
             <Typography variant="h4" component="h1" className={classes.title}>
@@ -120,11 +99,10 @@ const BurgerContainer = (): JSX.Element => {
             </div>
 
             <div className={classes.output}>
-                <Bread />
-
-                {IngredientsArray}
-
-                <Bread />
+                <Burger
+                    ingredients={ingredients}
+                    onIngredientClick={(index) => onDeleteIngredientHandler(index)}
+                />
             </div>
         </div>
     );
