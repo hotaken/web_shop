@@ -1,6 +1,7 @@
 import { Button, createStyles, makeStyles, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 import Burger from '../components/Burger/Burger';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 type IngredientType = 'bacon' | 'cheese' | 'cucumber';
 
@@ -52,10 +53,14 @@ const useStyles = makeStyles((theme) =>
 const BurgerContainer = (): JSX.Element => {
     const classes = useStyles();
 
-    const [ingredients, setIngredients] = useState<IngredientType[]>([]);
+    // const [ingredients, setIngredients] = useState<IngredientType[]>([]);
+    const [ingredientsStorage, setIngredientsStorage] = useLocalStorage<IngredientType[]>(
+        'ingredients',
+        [],
+    );
 
     const onAddIngredientHandler = (ingredient: IngredientType) => {
-        setIngredients((currentState) => {
+        setIngredientsStorage((currentState) => {
             const newState = [...currentState];
             newState.unshift(ingredient);
             return newState;
@@ -63,7 +68,7 @@ const BurgerContainer = (): JSX.Element => {
     };
 
     const onDeleteIngredientHandler = (ingredientNumber: number) => {
-        setIngredients((currentState) => {
+        setIngredientsStorage((currentState) => {
             const newState = [...currentState];
             newState.splice(ingredientNumber, 1);
             return newState;
@@ -100,7 +105,7 @@ const BurgerContainer = (): JSX.Element => {
 
             <div className={classes.output}>
                 <Burger
-                    ingredients={ingredients}
+                    ingredients={ingredientsStorage}
                     onIngredientClick={(index) => onDeleteIngredientHandler(index)}
                 />
             </div>
