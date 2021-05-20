@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Button, createStyles, makeStyles } from '@material-ui/core';
+import { Button, createStyles, makeStyles, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 import Bacon from '../components/Ingredients/Bacon';
 import Bread from '../components/Ingredients/Bread';
@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) =>
             width: '100%',
             marginTop: '20px',
             boxSizing: 'border-box',
+        },
+        title: {
+            color: theme.palette.secondary.main,
+            marginBottom: '15px',
         },
         management: {
             display: 'flex',
@@ -89,6 +93,9 @@ const BurgerContainer = (): JSX.Element => {
 
     return (
         <div className={classes.root}>
+            <Typography variant="h4" component="h1" className={classes.title}>
+                Choose ingredients
+            </Typography>
             <div className={classes.management}>
                 <Button
                     className={classes.baconButton}
