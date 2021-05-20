@@ -1,5 +1,6 @@
 // *** NPM ***
 import React from 'react';
+import BurgerContainer from '../containers/BurgerContainer';
 
 // *** OTHER ***
 import { IRouterObject } from './index';
@@ -9,7 +10,7 @@ const index: IRouterObject = {
     path: '/',
     exact: true,
     RenderFn: (): JSX.Element => {
-        return <h1>Home</h1>;
+        return <BurgerContainer />;
     },
 };
 
