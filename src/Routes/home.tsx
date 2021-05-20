@@ -1,9 +1,6 @@
-// *** NPM ***
 import React from 'react';
+import { IRouterObject } from '.';
 import BurgerContainer from '../containers/BurgerContainer';
-
-// *** OTHER ***
-import { IRouterObject } from './index';
 
 const index: IRouterObject = {
     name: 'home/index',

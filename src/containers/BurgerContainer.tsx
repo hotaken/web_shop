@@ -1,7 +1,16 @@
 import { Button, createStyles, makeStyles, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+
 import Burger from '../components/Burger/Burger';
-import useLocalStorage from '../hooks/useLocalStorage';
+// import useLocalStorage from '../hooks/useLocalStorage';
+import { StoreType, StoreDispatchType } from '../store';
+import {
+    addIngredientAction,
+    addIngredientActionType,
+    deleteIngredientAction,
+    deleteIngredientActionType,
+} from '../store/ingredients';
 
 type IngredientType = 'bacon' | 'cheese' | 'cucumber';
 
@@ -16,7 +25,7 @@ const useStyles = makeStyles((theme) =>
             boxSizing: 'border-box',
         },
         title: {
-            color: theme.palette.secondary.main,
+            color: theme.palette.primary.main,
             marginBottom: '15px',
         },
         management: {
@@ -50,29 +59,40 @@ const useStyles = makeStyles((theme) =>
     }),
 );
 
-const BurgerContainer = (): JSX.Element => {
+interface IProps {
+    ingredients: StoreType['ingredients'];
+    addIngredient: addIngredientActionType;
+    deleteIngredient: deleteIngredientActionType;
+}
+
+const BurgerContainer = (props: IProps): JSX.Element => {
     const classes = useStyles();
 
     // const [ingredients, setIngredients] = useState<IngredientType[]>([]);
-    const [ingredientsStorage, setIngredientsStorage] = useLocalStorage<IngredientType[]>(
-        'ingredients',
-        [],
-    );
+    // const [ingredientsStorage, setIngredientsStorage] = useLocalStorage<IngredientType[]>(
+    //     'ingredients',
+    //     [],
+    // );
+
+    // PROPS
+    const { ingredients, addIngredient, deleteIngredient } = props;
 
     const onAddIngredientHandler = (ingredient: IngredientType) => {
-        setIngredientsStorage((currentState) => {
-            const newState = [...currentState];
-            newState.unshift(ingredient);
-            return newState;
-        });
+        addIngredient({ ingredient });
+        // setIngredientsStorage((currentState) => {
+        //     const newState = [...currentState];
+        //     newState.unshift(ingredient);
+        //     return newState;
+        // });
     };
 
-    const onDeleteIngredientHandler = (ingredientNumber: number) => {
-        setIngredientsStorage((currentState) => {
-            const newState = [...currentState];
-            newState.splice(ingredientNumber, 1);
-            return newState;
-        });
+    const onDeleteIngredientHandler = (ingredientIndex: number) => {
+        deleteIngredient({ ingredientIndex });
+        // setIngredientsStorage((currentState) => {
+        //     const newState = [...currentState];
+        //     newState.splice(ingredientIndex, 1);
+        //     return newState;
+        // });
     };
 
     return (
@@ -105,7 +125,7 @@ const BurgerContainer = (): JSX.Element => {
 
             <div className={classes.output}>
                 <Burger
-                    ingredients={ingredientsStorage}
+                    ingredients={ingredients}
                     onIngredientClick={(index) => onDeleteIngredientHandler(index)}
                 />
             </div>
@@ -113,4 +133,19 @@ const BurgerContainer = (): JSX.Element => {
     );
 };
 
-export default BurgerContainer;
+// REDUX STORE
+const mapStateToProps = (state: StoreType) => {
+    return {
+        ingredients: state.ingredients,
+    };
+};
+const mapDispatchToProps = (dispatch: StoreDispatchType) => {
+    return {
+        addIngredient: ({ ingredient }: { ingredient: IngredientType }) =>
+            dispatch(addIngredientAction({ ingredient })),
+        deleteIngredient: ({ ingredientIndex }: { ingredientIndex: number }) =>
+            dispatch(deleteIngredientAction({ ingredientIndex })),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BurgerContainer);
