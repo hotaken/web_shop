@@ -1,6 +1,19 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Button, createStyles, makeStyles } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
+import Bacon from '../components/Ingredients/Bacon';
 import Bread from '../components/Ingredients/Bread';
+import Cheese from '../components/Ingredients/Cheese';
+import Cucumber from '../components/Ingredients/Cucumber';
+
+type IngredientType = 'bacon' | 'cheese' | 'cucumber';
+
+const ingredientsMap: { [key in IngredientType]: JSX.Element } = {
+    bacon: <Bacon />,
+    cheese: <Cheese />,
+    cucumber: <Cucumber />,
+};
 
 const useStyles = makeStyles((theme) =>
     createStyles({
@@ -45,26 +58,55 @@ const useStyles = makeStyles((theme) =>
 
 const BurgerContainer = (): JSX.Element => {
     const classes = useStyles();
+
+    const [ingredients, setIngredients] = useState<IngredientType[]>([]);
+
+    const onAddIngredientHandler = (ingredient: IngredientType) => {
+        setIngredients((currentState) => {
+            const newState = [...currentState];
+            newState.unshift(ingredient);
+            return newState;
+        });
+    };
+
+    const onDeleteIngredientHandler = (ingredientNumber: number) => {
+        setIngredients((currentState) => {
+            const newState = [...currentState];
+            newState.splice(ingredientNumber, 1);
+            return newState;
+        });
+    };
+
+    const IngredientsArray: JSX.Element[] = [];
+    ingredients.forEach((ingredient, index) => {
+        const ingredientComp = (
+            <div key={`${ingredient + index}`} onClick={() => onDeleteIngredientHandler(index)}>
+                {ingredientsMap[ingredient]}
+            </div>
+        );
+        IngredientsArray.push(ingredientComp);
+    });
+
     return (
         <div className={classes.root}>
             <div className={classes.management}>
                 <Button
                     className={classes.baconButton}
-                    // onClick={() => onAddIngredientHandler('bacon')}
+                    onClick={() => onAddIngredientHandler('bacon')}
                 >
                     Bacon
                 </Button>
 
                 <Button
                     className={classes.cheeseButton}
-                    // onClick={() => onAddIngredientHandler('cheese')}
+                    onClick={() => onAddIngredientHandler('cheese')}
                 >
                     Cheese
                 </Button>
 
                 <Button
                     className={classes.cucumberButton}
-                    // onClick={() => onAddIngredientHandler('cheese')}
+                    onClick={() => onAddIngredientHandler('cucumber')}
                 >
                     Cucumber
                 </Button>
@@ -72,6 +114,9 @@ const BurgerContainer = (): JSX.Element => {
 
             <div className={classes.output}>
                 <Bread />
+
+                {IngredientsArray}
+
                 <Bread />
             </div>
         </div>

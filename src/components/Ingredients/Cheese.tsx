@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SandwichCheese = (): JSX.Element => {
+const Cheese = (): JSX.Element => {
     return (
         <div
             style={{
@@ -14,4 +14,4 @@ const SandwichCheese = (): JSX.Element => {
     );
 };
 
-export default SandwichCheese;
+export default Cheese;

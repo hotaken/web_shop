@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SandwichCucumber = (): JSX.Element => {
+const Cucumber = (): JSX.Element => {
     return (
         <div
             style={{
@@ -14,4 +14,4 @@ const SandwichCucumber = (): JSX.Element => {
     );
 };
 
-export default SandwichCucumber;
+export default Cucumber;

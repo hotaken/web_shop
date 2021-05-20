@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SandwichBacon = (): JSX.Element => {
+const Bacon = (): JSX.Element => {
     return (
         <div
             style={{
@@ -14,4 +14,4 @@ const SandwichBacon = (): JSX.Element => {
     );
 };
 
-export default SandwichBacon;
+export default Bacon;
