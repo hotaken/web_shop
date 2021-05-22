@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
+import { Provider } from 'react-redux';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import store from './store';
 // primary main - header
 // primary light - icons color
 // secondary main - footer bg, buttons bg
@@ -19,11 +21,13 @@ const theme = createMuiTheme({
 
 ReactDOM.render(
     <React.StrictMode>
-        <ThemeProvider theme={theme}>
-            <Router>
-                <App />
-            </Router>
-        </ThemeProvider>
+        <Provider store={store}>
+            <ThemeProvider theme={theme}>
+                <Router>
+                    <App />
+                </Router>
+            </ThemeProvider>
+        </Provider>
     </React.StrictMode>,
     document.getElementById('root'),
 );

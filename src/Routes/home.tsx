@@ -1,15 +1,13 @@
-// *** NPM ***
 import React from 'react';
-
-// *** OTHER ***
-import { IRouterObject } from './index';
+import { IRouterObject } from '.';
+import BurgerContainer from '../containers/BurgerContainer';
 
 const index: IRouterObject = {
     name: 'home/index',
     path: '/',
     exact: true,
     RenderFn: (): JSX.Element => {
-        return <h1>Home</h1>;
+        return <BurgerContainer />;
     },
 };
 

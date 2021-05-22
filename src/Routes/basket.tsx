@@ -1,8 +1,5 @@
-// *** NPM ***
 import React from 'react';
-
-// *** OTHER ***
-import { IRouterObject } from './index';
+import { IRouterObject } from '.';
 
 const index: IRouterObject = {
     name: 'basket/index',
