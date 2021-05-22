@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import Layout from './HOC/Layout/Layout';
-import Routes from './routes';
+import Routes from './Routes';
 
 const App = (): JSX.Element => {
     useEffect(() => {
