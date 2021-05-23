@@ -30,13 +30,13 @@ const ingredientsMap: { [key in IngredientType]: JSX.Element } = {
 
 interface IProps {
     ingredients: IngredientType[];
-    onIngredientClick: (ingredientIndex: number) => void;
+    onIngredientClick?: (ingredientIndex: number) => void;
 }
 
 const Burger = (props: IProps): JSX.Element => {
     const classes = useStyles();
 
-    const { ingredients, onIngredientClick } = props;
+    const { ingredients, onIngredientClick = () => null } = props;
 
     const IngredientsArray: JSX.Element[] = [];
 
@@ -68,6 +68,10 @@ const Burger = (props: IProps): JSX.Element => {
             <Bread />
         </div>
     );
+};
+
+Burger.defaultProps = {
+    onIngredientClick: () => null,
 };
 
 export default Burger;

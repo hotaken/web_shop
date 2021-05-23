@@ -1,7 +1,5 @@
-// *** NPM ***
 import { v4 } from 'uuid';
 
-// *** OTHER ***
 import { IngredientType } from '../components/Burger/Burger';
 
 // *** ACTION TYPES ***
