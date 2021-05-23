@@ -1,4 +1,4 @@
-import { Button, createStyles, makeStyles, Typography } from '@material-ui/core';
+import { Button, createStyles, makeStyles, TextField, Typography } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -63,6 +63,20 @@ const useStyles = makeStyles((theme) =>
             alignItems: 'center',
             width: '100%',
         },
+        orderForm: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            width: '600px',
+            marginTop: '20px',
+            border: `3px solid ${theme.palette.primary.main}`,
+            borderRadius: '10px',
+            padding: '20px',
+        },
+        orderField: {
+            width: '400px',
+            margin: '10px auto',
+        },
     }),
 );
 
@@ -106,7 +120,20 @@ const BurgerContainer = (props: IProps): JSX.Element => {
         resetIngredients();
     };
 
-    const orderForm = ingredients.length > 0 ? <h1>COCK</h1> : null;
+    const orderForm =
+        ingredients.length > 0 ? (
+            <div className={classes.orderForm}>
+                <Typography variant="h5" component="h2" color="primary">
+                    ORDER
+                </Typography>
+
+                <TextField className={classes.orderField} variant="outlined" label="Amount" />
+
+                <Button variant="contained" color="secondary">
+                    ADD TO CART
+                </Button>
+            </div>
+        ) : null;
 
     return (
         <div className={classes.root}>
