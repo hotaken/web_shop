@@ -2,7 +2,7 @@ import { IngredientType } from '../components/Burger/Burger';
 
 type ADD_INGREDIENT = 'ADD_INGREDIENT';
 type DELETE_INGREDIENT = 'DELETE_INGREDIENT';
-type RESET_INGREDIENT = 'RESET_INGREDIENTS';
+type RESET_INGREDIENTS = 'RESET_INGREDIENTS';
 
 interface IAddIngredientAction {
     type: ADD_INGREDIENT;
@@ -14,7 +14,7 @@ interface IDeleteIngredientAction {
     ingredientIndex: number;
 }
 interface IResetIngredientsAction {
-    type: RESET_INGREDIENT;
+    type: RESET_INGREDIENTS;
 }
 
 type ActionTypes = IAddIngredientAction | IDeleteIngredientAction | IResetIngredientsAction;

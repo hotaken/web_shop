@@ -106,6 +106,8 @@ const BurgerContainer = (props: IProps): JSX.Element => {
         resetIngredients();
     };
 
+    const orderForm = ingredients.length > 0 ? <h1>COCK</h1> : null;
+
     return (
         <div className={classes.root}>
             <Typography variant="h4" component="h1" className={classes.title}>
@@ -133,7 +135,7 @@ const BurgerContainer = (props: IProps): JSX.Element => {
                     Cucumber
                 </Button>
 
-                <Button className={classes.resetButton} onClick={() => onResetIngredientsHandler}>
+                <Button className={classes.resetButton} onClick={() => onResetIngredientsHandler()}>
                     Reset
                 </Button>
             </div>
@@ -144,6 +146,8 @@ const BurgerContainer = (props: IProps): JSX.Element => {
                     onIngredientClick={(index) => onDeleteIngredientHandler(index)}
                 />
             </div>
+
+            {orderForm}
         </div>
     );
 };
