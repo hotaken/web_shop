@@ -1,9 +1,11 @@
 import React from 'react';
-import { Button, createStyles, makeStyles, Theme, useTheme } from '@material-ui/core';
+import { Button, createStyles, makeStyles, Theme, Typography, useTheme } from '@material-ui/core';
 import { HomeOutlined, ShoppingBasketOutlined } from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
 
+import { connect } from 'react-redux';
 import constants from '../../common/constants';
+import { StoreType } from '../../store';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -25,11 +27,27 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-const Header = (): JSX.Element => {
+interface IProps {
+    orders: StoreType['orders'];
+}
+
+const Header = (props: IProps): JSX.Element => {
     const classes = useStyles();
+
+    const { orders } = props;
 
     const theme = useTheme();
     const history = useHistory();
+
+    let ordersAmount = null;
+    if (Object.keys(orders).length > 0) {
+        ordersAmount = (
+            <Typography variant="body1" component="span" color="primary">
+                {Object.keys(orders).length}
+                &nbsp; &nbsp;
+            </Typography>
+        );
+    }
 
     return (
         <div className={classes.root}>
@@ -44,6 +62,7 @@ const Header = (): JSX.Element => {
                     variant="contained"
                     onClick={() => history.push('/basket')}
                 >
+                    {ordersAmount}
                     <ShoppingBasketOutlined style={{ color: theme.palette.primary.light }} />
                 </Button>
             </div>
@@ -51,4 +70,10 @@ const Header = (): JSX.Element => {
     );
 };
 
-export default Header;
+const mapStateToProps = (state: StoreType) => {
+    return {
+        orders: state.orders,
+    };
+};
+
+export default connect(mapStateToProps)(Header);
