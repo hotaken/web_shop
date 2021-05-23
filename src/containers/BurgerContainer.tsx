@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Button, createStyles, makeStyles, TextField, Typography } from '@material-ui/core';
+import { useSnackbar } from 'notistack';
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
@@ -104,6 +105,7 @@ const BurgerContainer = (props: IProps): JSX.Element => {
     const { ingredients, addIngredient, deleteIngredient, resetIngredients, addOrder } = props;
 
     const { handleSubmit, control, formState, reset } = useForm();
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
     const onAddIngredientHandler = (ingredient: IngredientType) => {
         addIngredient({ ingredient });
@@ -123,6 +125,12 @@ const BurgerContainer = (props: IProps): JSX.Element => {
         resetIngredients();
 
         reset();
+
+        const snackbarNotification = enqueueSnackbar('Check your order in the basket', {
+            variant: 'success',
+            anchorOrigin: { horizontal: 'right', vertical: 'top' },
+            onClick: () => closeSnackbar(snackbarNotification),
+        });
     };
 
     const orderForm =
