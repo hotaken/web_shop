@@ -2,6 +2,7 @@ import { IngredientType } from '../components/Burger/Burger';
 
 type ADD_INGREDIENT = 'ADD_INGREDIENT';
 type DELETE_INGREDIENT = 'DELETE_INGREDIENT';
+type RESET_INGREDIENT = 'RESET_INGREDIENTS';
 
 interface IAddIngredientAction {
     type: ADD_INGREDIENT;
@@ -12,8 +13,11 @@ interface IDeleteIngredientAction {
     type: DELETE_INGREDIENT;
     ingredientIndex: number;
 }
+interface IResetIngredientsAction {
+    type: RESET_INGREDIENT;
+}
 
-type ActionTypes = IAddIngredientAction | IDeleteIngredientAction;
+type ActionTypes = IAddIngredientAction | IDeleteIngredientAction | IResetIngredientsAction;
 
 export type addIngredientActionType = ({
     ingredient,
@@ -41,6 +45,14 @@ export const deleteIngredientAction: deleteIngredientActionType = ({ ingredientI
     };
 };
 
+export type resetIngredientsActionType = () => IResetIngredientsAction;
+
+export const resetIngredientsAction: resetIngredientsActionType = () => {
+    return {
+        type: 'RESET_INGREDIENTS',
+    };
+};
+
 // INITIAL STATE
 export type IngredientStateType = IngredientType[];
 const initialState: IngredientStateType = [];
@@ -57,6 +69,9 @@ const reducer = (state = initialState, action: ActionTypes): IngredientType[] =>
             const newState = [...state];
             newState.splice(action.ingredientIndex, 1);
             return newState;
+        }
+        case 'RESET_INGREDIENTS': {
+            return initialState;
         }
         default:
             return state;
