@@ -28,7 +28,7 @@ const store = createStore(
 store.subscribe(
     throttle(() => {
         // подписали REDUX на запись в локальное хранилище при изменении данных.
-        saveToLocalStorage(store.getState(), LOCAL_STORAGE_REDUX_NAME);
+        saveToLocalStorage({ ingredients: store.getState().ingredients }, LOCAL_STORAGE_REDUX_NAME);
     }, LOCAL_STORAGE_THROTTLE_TIME),
 );
 
