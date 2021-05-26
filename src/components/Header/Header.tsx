@@ -8,13 +8,14 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 // import constants from '../../common/constants';
 import { StoreType } from '../../store';
+// import { ReactComponent as Logo } from './burger_logo.svg';
+import burgerLogo from './burger_logo.png';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             display: 'flex',
             flexDirection: 'column',
-            backgroundColor: theme.palette.primary.main,
             width: '100%',
         },
         content: {
@@ -34,6 +35,15 @@ const useStyles = makeStyles((theme: Theme) =>
             width: '100%',
             marginLeft: '45%',
             marginRight: '15%',
+        },
+        LogoStyle: {
+            height: '64px',
+            width: '64px',
+        },
+        LeftLogo: {
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'end',
         },
     }),
 );
@@ -63,6 +73,15 @@ const Header = (props: IProps): JSX.Element => {
     return (
         <div className={classes.root}>
             <div className={classes.content}>
+                {/* BURGER LOGO */}
+                <div className={classes.LeftLogo}>
+                    <img src={burgerLogo} alt="LogoStyle" className={classes.LogoStyle} />
+                    {/* BurgerBro */}
+                    <Typography style={{ color: theme.palette.primary.light }}>
+                        BurgerBro
+                    </Typography>
+                </div>
+
                 <div className={classes.buttonsCont}>
                     {/* HOME */}
                     <Button color="secondary" variant="contained" onClick={() => history.push('/')}>
