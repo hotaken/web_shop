@@ -1,7 +1,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import homeRoutes from './home';
+import homeRouter from './home';
+import burgerListRouter from './burgersList';
+import burgerConstructorRouter from './burgerConstructor';
+import aboutUsRouter from './aboutUs';
 import basketRouter from './basket';
 
 export interface IRouterObject {
@@ -11,7 +14,13 @@ export interface IRouterObject {
     RenderFn: () => JSX.Element;
 }
 
-export const allRoutes = [...homeRoutes, ...basketRouter];
+export const allRoutes = [
+    ...homeRouter,
+    ...burgerListRouter,
+    ...burgerConstructorRouter,
+    ...aboutUsRouter,
+    ...basketRouter,
+];
 
 const Routes = (): JSX.Element => {
     return (

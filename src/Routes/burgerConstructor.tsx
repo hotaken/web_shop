@@ -1,12 +1,13 @@
 import React from 'react';
 import { IRouterObject } from '.';
+import BurgerContainer from '../containers/BurgerContainer';
 
 const index: IRouterObject = {
-    name: 'home/index',
-    path: '/',
+    name: 'constructor/index',
+    path: '/constructor',
     exact: true,
     RenderFn: (): JSX.Element => {
-        return <h1>ANY TIME BURGERS ANY PLACE</h1>;
+        return <BurgerContainer />;
     },
 };
 
