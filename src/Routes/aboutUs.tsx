@@ -2,11 +2,11 @@ import React from 'react';
 import { IRouterObject } from '.';
 
 const index: IRouterObject = {
-    name: 'home/index',
-    path: '/',
+    name: 'aboutUs/index',
+    path: '/aboutUs',
     exact: true,
     RenderFn: (): JSX.Element => {
-        return <h1>ANY TIME BURGERS ANY PLACE</h1>;
+        return <h1>About us</h1>;
     },
 };
 
