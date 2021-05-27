@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     },
     content: {
         flex: '1',
-        width: constants.CONTENT_WIDTH,
+        width: '1920px', // here maybe should be not 1000px
         margin: '0 auto',
         height: '100vh',
     },
@@ -36,8 +36,6 @@ const Layout = (props: IProps): JSX.Element => {
                 {/* ROUTES */}
                 {children}
             </main>
-
-            <Footer />
         </div>
     );
 };

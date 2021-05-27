@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
         root: {
             display: 'flex',
             flexDirection: 'column',
+            height: '100%',
         },
         content: {
             display: 'flex',
@@ -22,8 +23,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
             height: '100%',
             width: '100%',
-            margin: '0 auto',
-            padding: '10px 20px',
+            // margin: '0 auto',
+            // padding: '10px 20px',
             boxSizing: 'border-box',
         },
 
@@ -46,8 +47,8 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'end',
-            marginTop: '14%',
-            marginLeft: '-40%',
+            marginTop: '8%',
+            marginLeft: '5%',
         },
         mainButton: {
             fontWeight: 'bold',
@@ -71,6 +72,44 @@ const useStyles = makeStyles((theme: Theme) =>
                 boxShadow: 'none',
                 borderColor: '#F47500',
             },
+        },
+        blackRect: {
+            backgroundColor: 'black',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'end',
+            width: '100%',
+            opacity: '0.85',
+            clipPath: 'polygon(60% 0, 100% 0, 100% 100%, 20% 100%)',
+        },
+
+        mainCircle: {
+            backgroundColor: '#F47500',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'end',
+            width: '40%',
+            height: '40%',
+            marginRight: '-40%',
+            marginLeft: '10%',
+            marginTop: '12%',
+
+            borderRadius: '50%',
+            border: '30px solid white',
+
+            zIndex: 1,
+        },
+        mainImage: {
+            position: 'absolute',
+
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'end',
+            width: '50%',
+            height: '50%',
+            marginLeft: '37%',
+            zIndex: 2,
+            marginTop: '8%',
         },
     }),
 );
@@ -117,6 +156,15 @@ const HomePage = (props: IProps): JSX.Element => {
                         </Typography>
                     </Button>
                 </div>
+                <div className={classes.mainCircle} />
+                <div className={classes.mainImage}>
+                    <img
+                        src={mainBurger}
+                        alt=""
+                        style={{ height: '100%', width: '100%', objectFit: 'contain' }}
+                    />
+                </div>
+                <div className={classes.blackRect} />
             </div>
         </div>
     );
