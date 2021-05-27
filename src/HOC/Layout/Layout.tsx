@@ -17,6 +17,7 @@ const useStyles = makeStyles({
         flex: '1',
         width: constants.CONTENT_WIDTH,
         margin: '0 auto',
+        height: '100vh',
     },
 });
 

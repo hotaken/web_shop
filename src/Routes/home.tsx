@@ -1,12 +1,13 @@
 import React from 'react';
 import { IRouterObject } from '.';
+import HomePage from '../components/HomePage/HomePage';
 
 const index: IRouterObject = {
     name: 'home/index',
     path: '/',
     exact: true,
     RenderFn: (): JSX.Element => {
-        return <h1>ANY TIME BURGERS ANY PLACE</h1>;
+        return <HomePage />;
     },
 };
 
