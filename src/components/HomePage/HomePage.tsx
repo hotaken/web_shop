@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme: Theme) =>
             justifyContent: 'end',
             width: '50%',
             height: '50%',
-            marginLeft: '37%',
+            marginLeft: '38%',
             zIndex: 2,
             marginTop: '8%',
         },

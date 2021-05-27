@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     },
     content: {
         flex: '1',
-        width: '1920px', // here maybe should be not 1000px
+        width: '100%',
         margin: '0 auto',
         height: '100vh',
     },
