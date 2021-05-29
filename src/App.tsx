@@ -15,8 +15,9 @@ const App = (): JSX.Element => {
             style={{
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'bottom right',
-                backgroundImage: `linear-gradient(rgba(255,255,255,0.5), 
+                backgroundImage: `linear-gradient(rgba(255,255,255,0.5),
             rgba(255,255,255,0.5)), url(${mainBurger})`,
+                backgroundSize: '45%',
             }}
         >
             <Layout>
