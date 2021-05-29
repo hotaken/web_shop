@@ -15,8 +15,9 @@ const useStyles = makeStyles({
     },
     content: {
         flex: '1',
-        width: constants.CONTENT_WIDTH,
+        width: '100%',
         margin: '0 auto',
+        height: '100vh',
     },
 });
 
@@ -35,8 +36,6 @@ const Layout = (props: IProps): JSX.Element => {
                 {/* ROUTES */}
                 {children}
             </main>
-
-            <Footer />
         </div>
     );
 };
