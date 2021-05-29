@@ -1,11 +1,7 @@
 import React from 'react';
-import { Button, createStyles, makeStyles, Theme, Typography, useTheme } from '@material-ui/core';
-import { AccountCircleSharp } from '@material-ui/icons';
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import { Button, createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 
-import { connect } from 'react-redux';
-import { StoreType } from '../../store';
 import mainBurger from './mainBurger.png';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -114,27 +110,10 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-interface IProps {
-    orders: StoreType['orders'];
-}
-
-const HomePage = (props: IProps): JSX.Element => {
+const HomePage = (): JSX.Element => {
     const classes = useStyles();
 
-    const { orders } = props;
-
-    const theme = useTheme();
     const history = useHistory();
-
-    let ordersAmount = null;
-    if (Object.keys(orders).length > 0) {
-        ordersAmount = (
-            <Typography variant="body1" component="span" color="primary">
-                {Object.keys(orders).length}
-                &nbsp; &nbsp;
-            </Typography>
-        );
-    }
 
     return (
         <div className={classes.root}>
@@ -170,10 +149,4 @@ const HomePage = (props: IProps): JSX.Element => {
     );
 };
 
-const mapStateToProps = (state: StoreType) => {
-    return {
-        orders: state.orders,
-    };
-};
-
-export default connect(mapStateToProps)(HomePage);
+export default HomePage;

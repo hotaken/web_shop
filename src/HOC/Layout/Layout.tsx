@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 
-import constants from '../../common/constants';
-import Footer from '../../components/Footer/Footer';
+// import constants from '../../common/constants';
+// import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 
 const useStyles = makeStyles({
