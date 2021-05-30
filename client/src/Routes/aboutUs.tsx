@@ -1,12 +1,13 @@
 import React from 'react';
 import { IRouterObject } from '.';
+import AboutUs from '../components/AboutUs/AboutUs';
 
 const index: IRouterObject = {
     name: 'aboutUs/index',
     path: '/aboutUs',
     exact: true,
     RenderFn: (): JSX.Element => {
-        return <h1>About us</h1>;
+        return <AboutUs />;
     },
 };
 
