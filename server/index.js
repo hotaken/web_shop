@@ -20,10 +20,6 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-app.listen(PORT, () => {
-    console.log(`Server listening on ${PORT}`);
-});
-
 //Подключение к БД
 let db = new sqlite3.Database('server/dataBase.sqlite', (err) => {
     if (err) {
@@ -52,4 +48,8 @@ app.get('/api/getBurgerList', function (request, response) {
             response.end();
         });
     }
+});
+
+app.listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`);
 });
