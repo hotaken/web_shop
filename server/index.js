@@ -9,8 +9,9 @@ const app = express();
 app.get('/api', (req, res) => {
     res.json({ message: 'Hello from server!' });
 });
-
+console.log(__dirname);
 if (process.env.NODE_ENV === 'production') {
+    console.log(__dirname);
     // Serve any static files
     app.use(express.static('../client/build'));
 
