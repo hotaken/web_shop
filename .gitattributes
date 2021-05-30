@@ -24,3 +24,5 @@
 *.woff binary
 *.pyc binary
 *.pdf binary
+*.db binary
+*.sqlite binary
