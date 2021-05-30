@@ -35,10 +35,10 @@ let db = new sqlite3.Database('server/dataBase.sqlite', (err) => {
 app.get('/api/getBurgerList', function (request, response) {
     let array = [];
     let burger = request.query.burger;
-    console.log(burger)
+    console.log(burger);
     if (burger == 'All') {
         db.all("select name from sqlite_master where type='table'", (err, tables) => {
-            console.log(tables)
+            console.log(tables);
         });
         db.all('SELECT * FROM burger_list', (err, rows) => {
             if (err) {
@@ -46,22 +46,10 @@ app.get('/api/getBurgerList', function (request, response) {
             }
             console.log('hi');
             rows.forEach((row) => {
-                array.push(JSON.parse(row.jsonIngredients)["ingredients"]);
+                array.push(JSON.parse(row.jsonIngredients)['ingredients']);
             });
             response.write(JSON.stringify(array));
             response.end();
         });
     }
-    /* else {
-      db.all('SELECT Games.id FROM Games,Genres,GenreGame WHERE Games.id = GenreGame.game_id and GenreGame.genre_id = Genres.id and Games.rating >= ? and Genres.name = ?', [rating, burger], (err, rows) => {
-        if (err) {
-          throw err;
-        }
-        rows.forEach((row) => {
-          array.push(row.id);
-        });
-        response.write(JSON.stringify(array));
-        response.end();
-      });
-    } */
 });
