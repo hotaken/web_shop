@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
 
     // Handle React routing, return all requests to React app
     app.get('*', function (req, res) {
-        res.sendFile(path.join('client/build/index.html'));
+        res.sendFile(path.join('index.html'));
     });
 }
 //Подключение к БД
