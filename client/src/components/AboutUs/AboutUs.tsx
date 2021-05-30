@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import { createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
 import mainBurger from './AboutUsBurger.png';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -58,12 +57,13 @@ const useStyles = makeStyles((theme: Theme) =>
 const AboutUs = (): JSX.Element => {
     const classes = useStyles();
 
-    const history = useHistory();
-
     return (
         <div className={classes.root}>
             <div className={classes.content}>
                 <div className={classes.mainT}>
+                    <Typography variant="h1" style={{ fontWeight: 'bold' }}>
+                        BurgerBro
+                    </Typography>
                     <Typography className={classes.mainText}>
                         Every day, hundreds of thousands of people need to eat quickly, tasty and
                         high-quality. Therefore, we are launching our network of burger clubs, with

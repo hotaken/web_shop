@@ -14,6 +14,7 @@ const App = (): JSX.Element => {
             className="App"
             style={{
                 backgroundRepeat: 'no-repeat',
+                backgroundAttachment: 'fixed',
                 backgroundPosition: 'bottom right',
                 backgroundImage: `linear-gradient(rgba(255,255,255,0.5),
             rgba(255,255,255,0.5)), url(${mainBurger})`,

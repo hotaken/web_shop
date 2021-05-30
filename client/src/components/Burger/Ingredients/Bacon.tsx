@@ -4,11 +4,11 @@ const Bacon = (): JSX.Element => {
     return (
         <div
             style={{
-                height: '30px',
-                width: '580px',
+                height: '1.5em',
+                width: '74%',
                 backgroundColor: '#b33e10',
                 border: '2px solid #6b4000',
-                borderRadius: '3px',
+                borderRadius: '8px',
             }}
         />
     );

@@ -4,11 +4,11 @@ const Bread = (): JSX.Element => {
     return (
         <div
             style={{
-                height: '30px',
-                width: '600px',
+                height: '2em',
+                width: '80%',
                 border: '4px solid #875812',
                 backgroundColor: 'orange',
-                borderRadius: '5px',
+                borderRadius: '20px',
             }}
         />
     );

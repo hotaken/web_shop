@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) =>
             justifyContent: 'center',
             alignItems: 'center',
             marginTop: '20px',
+            width: '800px',
         },
         amount: {
             marginTop: '10px',

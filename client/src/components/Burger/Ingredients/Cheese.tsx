@@ -4,11 +4,11 @@ const Cheese = (): JSX.Element => {
     return (
         <div
             style={{
-                height: '15px',
-                width: '580px',
+                height: '1em',
+                width: '76%',
                 backgroundColor: '#f5c451',
                 border: '1px solid #b37d00',
-                borderRadius: '5px',
+                borderRadius: '14px',
             }}
         />
     );

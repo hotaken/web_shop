@@ -9,17 +9,6 @@ import Bacon from './Ingredients/Bacon';
 import Cheese from './Ingredients/Cheese';
 import Bread from './Ingredients/Bread';
 
-const useStyles = makeStyles((theme) =>
-    createStyles({
-        root: {
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            width: '100%',
-        },
-    }),
-);
-
 export type IngredientType = 'bacon' | 'cheese' | 'cucumber';
 
 const ingredientsMap: { [key in IngredientType]: JSX.Element } = {
@@ -31,18 +20,33 @@ const ingredientsMap: { [key in IngredientType]: JSX.Element } = {
 interface IProps {
     ingredients: IngredientType[];
     onIngredientClick?: (ingredientIndex: number) => void;
+    heightElem?: string;
 }
 
 const Burger = (props: IProps): JSX.Element => {
-    const classes = useStyles();
-
-    const { ingredients, onIngredientClick = () => null } = props;
+    const { ingredients, onIngredientClick = () => null, heightElem = null } = props;
+    const classes = makeStyles((theme) =>
+        createStyles({
+            root: {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                width: '100%',
+                fontSize: heightElem || 'auto',
+            },
+        }),
+    )();
+    // const classes = useStyles();
 
     const IngredientsArray: JSX.Element[] = [];
 
     ingredients.forEach((ingredient, index) => {
         const ingredientComponent = (
-            <div key={`${ingredient + index}`} onClick={() => onIngredientClick(index)}>
+            <div
+                key={`${ingredient + index}`}
+                onClick={() => onIngredientClick(index)}
+                className={classes.root}
+            >
                 {ingredientsMap[ingredient]}
             </div>
         );
@@ -72,6 +76,7 @@ const Burger = (props: IProps): JSX.Element => {
 
 Burger.defaultProps = {
     onIngredientClick: () => null,
+    heightElem: null,
 };
 
 export default Burger;

@@ -31,18 +31,18 @@ let db = new sqlite3.Database('server/dataBase.sqlite', (err) => {
 app.get('/api/getBurgerList', function (request, response) {
     let array = [];
     let burger = request.query.burger;
-    console.log(burger);
     if (burger == 'All') {
-        db.all("select name from sqlite_master where type='table'", (err, tables) => {
-            console.log(tables);
-        });
+        console.log('SELECT * FROM burger_list');
         db.all('SELECT * FROM burger_list', (err, rows) => {
             if (err) {
                 throw err;
             }
-            console.log('hi');
             rows.forEach((row) => {
-                array.push(JSON.parse(row.jsonIngredients)['ingredients']);
+                array.push({
+                    name: row.name,
+                    ingredients: JSON.parse(row.jsonIngredients)['ingredients'],
+                    description: row.description,
+                });
             });
             response.write(JSON.stringify(array));
             response.end();
