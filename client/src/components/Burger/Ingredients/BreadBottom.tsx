@@ -1,17 +1,17 @@
 import React from 'react';
 
-const Bread = (): JSX.Element => {
+const BreadBottom = (): JSX.Element => {
     return (
         <div
             style={{
-                height: '6em',
+                height: '4em',
                 width: '80%',
                 border: '4px solid #875812',
                 backgroundColor: 'orange',
-                borderRadius: '200px 200px 20px 20px',
+                borderRadius: '20px 20px 100px 100px',
             }}
         />
     );
 };
 
-export default Bread;
+export default BreadBottom;

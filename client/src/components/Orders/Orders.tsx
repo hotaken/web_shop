@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) =>
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            width: '100%',
+            // width: '100%',
             marginTop: '20px',
             padding: '20px',
             boxSizing: 'border-box',

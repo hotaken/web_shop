@@ -8,6 +8,7 @@ import Cucumber from './Ingredients/Cucumber';
 import Bacon from './Ingredients/Bacon';
 import Cheese from './Ingredients/Cheese';
 import Bread from './Ingredients/Bread';
+import BreadBottom from './Ingredients/BreadBottom';
 
 export type IngredientType = 'bacon' | 'cheese' | 'cucumber';
 
@@ -69,7 +70,7 @@ const Burger = (props: IProps): JSX.Element => {
             )}
 
             {/* BOTTOM BREAD */}
-            <Bread />
+            <BreadBottom />
         </div>
     );
 };

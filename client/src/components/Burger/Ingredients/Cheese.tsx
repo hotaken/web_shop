@@ -8,7 +8,7 @@ const Cheese = (): JSX.Element => {
                 width: '76%',
                 backgroundColor: '#f5c451',
                 border: '1px solid #b37d00',
-                borderRadius: '14px',
+                borderRadius: '5px',
             }}
         />
     );
