@@ -71,13 +71,16 @@ const Order = (props: IProps): JSX.Element => {
                 <Typography className={classes.amount} variant="h6" component="span">
                     Amount: {amount} <br />
                     Price:{' '}
-                    {((priceList !== undefined && ingredients.length > 0
-                        ? ingredients
-                              .map((ingredient) => priceList[ingredient])
-                              .reduce((a, b) => a + b)
-                        : 0) /
-                        100) *
-                        amount}{' '}
+                    {Math.round(
+                        ((priceList !== undefined && ingredients.length > 0
+                            ? ingredients
+                                  .map((ingredient) => priceList[ingredient])
+                                  .reduce((a, b) => a + b)
+                            : 0) /
+                            100) *
+                            amount *
+                            10,
+                    ) / 10}{' '}
                     $
                 </Typography>
 
