@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Button, createStyles, makeStyles, TextField, Typography } from '@material-ui/core';
 import { useSnackbar } from 'notistack';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
 
@@ -113,14 +113,23 @@ interface IProps {
     addOrder: addOrderActionType;
 }
 
+export type pricingType = {
+    [ingredient in IngredientType]: number;
+};
+
 const BurgerContainer = (props: IProps): JSX.Element => {
     const classes = useStyles();
 
-    // const [ingredients, setIngredients] = useState<IngredientType[]>([]);
-    // const [ingredientsStorage, setIngredientsStorage] = useLocalStorage<IngredientType[]>(
-    //     'ingredients',
-    //     [],
-    // );
+    const [priceList, setPriceList] = useState<pricingType>();
+
+    useEffect(() => {
+        fetch('/api/getIngredientPrices')
+            .then((res) => res.json())
+            .then((data) => {
+                setPriceList(data);
+                console.log(data);
+            });
+    }, []);
 
     // PROPS
     const { ingredients, addIngredient, deleteIngredient, resetIngredients, addOrder } = props;
@@ -239,6 +248,13 @@ const BurgerContainer = (props: IProps): JSX.Element => {
                     onIngredientClick={(index) => onDeleteIngredientHandler(index)}
                 />
             </div>
+            <Typography variant="h4" component="h1" className={classes.title}>
+                Price{' '}
+                {(priceList !== undefined && ingredients.length > 0
+                    ? ingredients.map((ingredient) => priceList[ingredient]).reduce((a, b) => a + b)
+                    : 0) / 100}{' '}
+                $
+            </Typography>
 
             {orderForm}
         </div>

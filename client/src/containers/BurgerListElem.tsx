@@ -75,12 +75,13 @@ interface IProps {
     ingredients: IngredientType[];
     name: string;
     description: string;
+    price: number;
     addOrder: addOrderActionType;
 }
 
 const BurgerListElem = (props: IProps): JSX.Element => {
     const classes = useStyles();
-    const { ingredients, name, description, addOrder } = props;
+    const { ingredients, name, description, price, addOrder } = props;
 
     const { handleSubmit, control, formState, reset } = useForm();
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -150,6 +151,8 @@ const BurgerListElem = (props: IProps): JSX.Element => {
         <div className={classes.root}>
             <Typography variant="h4" component="h1" className={classes.title}>
                 {name}
+                <br />
+                Price: {price / 100} $
             </Typography>
 
             <div className={classes.output}>

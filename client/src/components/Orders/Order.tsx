@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Typography } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Burger, { IngredientType } from '../Burger/Burger';
 import { StoreDispatchType } from '../../store';
 import { deleteOrderAction, deleteOrderActionType } from '../../store/orders';
+import { pricingType } from '../../containers/BurgerContainer';
 
 const useStyles = makeStyles((theme) =>
     createStyles({
@@ -51,13 +52,33 @@ const Order = (props: IProps): JSX.Element => {
 
     const { orderID, amount, ingredients, deleteOrder } = props;
 
+    const [priceList, setPriceList] = useState<pricingType>();
+
+    useEffect(() => {
+        fetch('/api/getIngredientPrices')
+            .then((res) => res.json())
+            .then((data) => {
+                setPriceList(data);
+                console.log(data);
+            });
+    }, []);
+
     return (
         <div className={classes.root}>
             <Burger ingredients={ingredients} heightElem="10px" />
 
             <div className={classes.downTab}>
                 <Typography className={classes.amount} variant="h6" component="span">
-                    Amount: {amount}
+                    Amount: {amount} <br />
+                    Price:{' '}
+                    {((priceList !== undefined && ingredients.length > 0
+                        ? ingredients
+                              .map((ingredient) => priceList[ingredient])
+                              .reduce((a, b) => a + b)
+                        : 0) /
+                        100) *
+                        amount}{' '}
+                    $
                 </Typography>
 
                 {/* DELETE BUTTON */}

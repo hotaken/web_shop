@@ -22,13 +22,18 @@ const useStyles = makeStyles((theme) =>
             flexDirection: 'row',
             justifyContent: 'flex-start',
             flexWrap: 'wrap',
-            marginLeft: '7%',
-            width: '100%',
+            marginLeft: '4%',
+            // width: '100%',
             marginBottom: '100px',
         },
     }),
 );
-type burgerType = { name: string; ingredients: IngredientType[]; description: string };
+type burgerType = {
+    name: string;
+    ingredients: IngredientType[];
+    description: string;
+    price: number;
+};
 
 const BurgerList = (): JSX.Element => {
     const classes = useStyles();
@@ -53,6 +58,7 @@ const BurgerList = (): JSX.Element => {
                     name={obj.name}
                     ingredients={obj.ingredients}
                     description={obj.description}
+                    price={obj.price}
                 />
             );
             burgerListOutput.push(burgerOutput);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, createStyles, makeStyles, Theme, Typography, useTheme } from '@material-ui/core';
 import { AccountCircleSharp } from '@material-ui/icons';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { StoreType } from '../../store';
 // import { ReactComponent as Logo } from './burger_logo.svg';
 import burgerLogo from './burger_logo.png';
+import { pricingType } from '../../containers/BurgerContainer';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -68,13 +69,31 @@ const Header = (props: IProps): JSX.Element => {
 
     const theme = useTheme();
     const history = useHistory();
+    const [priceList, setPriceList] = useState<pricingType>();
 
+    useEffect(() => {
+        fetch('/api/getIngredientPrices')
+            .then((res) => res.json())
+            .then((data) => {
+                setPriceList(data);
+                console.log(data);
+            });
+    }, []);
     let ordersAmount = null;
-    if (Object.keys(orders).length > 0) {
+    console.log(orders);
+    if (priceList !== undefined && Object.keys(orders).length > 0) {
+        const values = Object.values(orders);
+        let allSumm = 0;
+        for (let i = 0; i < values.length; i += 1) {
+            let summ = 0;
+            for (let j = 0; j < values[i].ingredients.length; j += 1) {
+                summ += priceList[values[i].ingredients[j]];
+            }
+            allSumm += summ * values[i].amount;
+        }
         ordersAmount = (
             <Typography variant="body1" component="span" color="primary">
-                {Object.keys(orders).length}
-                &nbsp; &nbsp;
+                {allSumm / 100} $ &nbsp; &nbsp;
             </Typography>
         );
     }
