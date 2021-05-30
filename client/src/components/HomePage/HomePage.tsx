@@ -131,7 +131,7 @@ const HomePage = (): JSX.Element => {
                         <Typography
                             style={{ color: 'white', fontSize: '24px', fontWeight: 'bold' }}
                         >
-                            ORDER NOW
+                            TRY OUT
                         </Typography>
                     </Button>
                 </div>

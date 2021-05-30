@@ -121,18 +121,6 @@ const Header = (props: IProps): JSX.Element => {
                         </Typography>
                     </Button>
 
-                    {/* ACCOUNT */}
-                    <Button
-                        color="secondary"
-                        onClick={() => {
-                            history.push('/');
-                            // eslint-disable-next-line no-alert
-                            alert('in development');
-                        }}
-                    >
-                        <AccountCircleSharp style={{ color: theme.palette.primary.light }} />
-                    </Button>
-
                     {/* BASKET */}
                     <Button color="secondary" onClick={() => history.push('/basket')}>
                         {ordersAmount}

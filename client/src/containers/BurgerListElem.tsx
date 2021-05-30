@@ -16,41 +16,57 @@ const useStyles = makeStyles((theme) =>
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            width: '100%',
+            justifyContent: 'space-between',
+            width: '400px',
             marginTop: '20px',
             boxSizing: 'border-box',
-            border: `3px solid ${theme.palette.primary.main}`,
+            border: `3px solid black`,
             borderRadius: '20px',
             padding: '10px',
+            margin: '1% 1% 1% 1%',
+            backgroundColor: 'rgba(255,255, 255, 0.7)',
         },
         title: {
-            color: theme.palette.primary.main,
             marginBottom: '15px',
-        },
-        management: {
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'flex-start',
-            width: '600px',
-            marginBottom: '10px',
         },
         output: {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            width: '800px',
+            width: '400px',
         },
         orderForm: {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            width: '600px',
+            width: '400px',
             marginTop: '20px',
             padding: '20px',
         },
         orderField: {
-            width: '400px',
+            width: '300px',
             margin: '10px auto',
+        },
+        mainButton: {
+            marginTop: '3%',
+            color: 'white',
+            backgroundColor: '#F47500',
+            borderRadius: '7px',
+            borderColor: '#F47500',
+            '&:focus': {
+                boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+                borderColor: '#F47500',
+            },
+            '&:active': {
+                boxShadow: 'none',
+                backgroundColor: '#F47500',
+                borderColor: '#F47500',
+            },
+            '&:hover': {
+                backgroundColor: '#F47500',
+                boxShadow: 'none',
+                borderColor: '#F47500',
+            },
         },
     }),
 );
@@ -87,7 +103,7 @@ const BurgerListElem = (props: IProps): JSX.Element => {
         ingredients.length > 0 ? (
             <form onSubmit={handleSubmit(onSubmitHandler)}>
                 <div className={classes.orderForm}>
-                    <Typography variant="h5" component="h2" color="primary">
+                    <Typography variant="h5" component="h2">
                         {description}
                     </Typography>
                     <Controller
@@ -123,7 +139,7 @@ const BurgerListElem = (props: IProps): JSX.Element => {
                         defaultValue=""
                     />
 
-                    <Button variant="contained" color="secondary" type="submit">
+                    <Button className={classes.mainButton} type="submit">
                         ADD TO CART
                     </Button>
                 </div>
@@ -137,7 +153,7 @@ const BurgerListElem = (props: IProps): JSX.Element => {
             </Typography>
 
             <div className={classes.output}>
-                <Burger ingredients={ingredients} />
+                <Burger ingredients={ingredients} heightElem="10px" />
             </div>
 
             {orderForm}

@@ -81,6 +81,27 @@ const useStyles = makeStyles((theme) =>
             width: '400px',
             margin: '10px auto',
         },
+        mainButton: {
+            marginTop: '3%',
+            color: 'white',
+            backgroundColor: '#F47500',
+            borderRadius: '7px',
+            borderColor: '#F47500',
+            '&:focus': {
+                boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+                borderColor: '#F47500',
+            },
+            '&:active': {
+                boxShadow: 'none',
+                backgroundColor: '#F47500',
+                borderColor: '#F47500',
+            },
+            '&:hover': {
+                backgroundColor: '#F47500',
+                boxShadow: 'none',
+                borderColor: '#F47500',
+            },
+        },
     }),
 );
 
@@ -173,7 +194,7 @@ const BurgerContainer = (props: IProps): JSX.Element => {
                         defaultValue=""
                     />
 
-                    <Button variant="contained" color="secondary" type="submit">
+                    <Button className={classes.mainButton} type="submit">
                         ADD TO CART
                     </Button>
                 </div>

@@ -15,14 +15,15 @@ const useStyles = makeStyles((theme) =>
             boxSizing: 'border-box',
         },
         title: {
-            color: theme.palette.primary.main,
             marginBottom: '15px',
         },
         management: {
             display: 'flex',
-            flexDirection: 'column',
+            flexDirection: 'row',
             justifyContent: 'flex-start',
-            width: '60%',
+            flexWrap: 'wrap',
+            marginLeft: '5%',
+            // width: '100%',
             marginBottom: '100px',
         },
     }),
