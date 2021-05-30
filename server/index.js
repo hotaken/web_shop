@@ -12,7 +12,7 @@ app.get('/api', (req, res) => {
 
 if (process.env.NODE_ENV === 'production') {
     // Serve any static files
-    app.use(express.static('client/build'));
+    app.use(express.static('../client/build'));
 
     // Handle React routing, return all requests to React app
     app.get('*', function (req, res) {
@@ -28,6 +28,7 @@ let db = new sqlite3.Database(path.join('server/dataBase.sqlite'), (err) => {
         return console.log(err.message);
     }
     console.log('Connected to server/dataBase.sqlite');
+    console.log(_dirname);
 });
 
 app.get('/api/getBurgerList', function (request, response) {
