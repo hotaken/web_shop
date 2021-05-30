@@ -10,16 +10,7 @@ app.get('/api', (req, res) => {
     res.json({ message: 'Hello from server!' });
 });
 console.log(__dirname);
-if (process.env.NODE_ENV === 'production') {
-    console.log(__dirname);
-    // Serve any static files
-    app.use(express.static(path.join(__dirname, 'client', 'build')));
 
-    // Handle React routing, return all requests to React app
-    app.get('*', function (req, res) {
-        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-    });
-}
 //Подключение к БД
 let db = new sqlite3.Database(path.join('server/dataBase.sqlite'), (err) => {
     if (err) {
@@ -53,6 +44,17 @@ app.get('/api/getBurgerList', function (request, response) {
         });
     }
 });
+
+if (process.env.NODE_ENV === 'production') {
+    console.log(__dirname);
+    // Serve any static files
+    app.use(express.static(path.join(__dirname, 'client', 'build')));
+
+    // Handle React routing, return all requests to React app
+    app.get('*', function (req, res) {
+        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
