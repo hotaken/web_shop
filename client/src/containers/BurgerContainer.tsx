@@ -211,7 +211,7 @@ const BurgerContainer = (props: IProps): JSX.Element => {
                     className={classes.baconButton}
                     onClick={() => onAddIngredientHandler('bacon')}
                 >
-                    Bacon
+                    Meat
                 </Button>
 
                 <Button

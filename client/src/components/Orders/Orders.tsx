@@ -16,12 +16,11 @@ const useStyles = makeStyles((theme) =>
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            // width: '100%',
+            width: '100%',
             marginTop: '20px',
-            padding: '20px',
             boxSizing: 'border-box',
-            border: `2px solid ${theme.palette.primary.main}`,
-            borderRadius: '10px',
+            // border: `2px solid ${theme.palette.primary.main}`,
+            // borderRadius: '10px',
         },
         title: {
             color: theme.palette.secondary.main,
@@ -33,6 +32,15 @@ const useStyles = makeStyles((theme) =>
             justifyContent: 'center',
             alignItems: 'center',
             height: '100vh',
+        },
+        management: {
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
+            flexWrap: 'wrap',
+            marginLeft: '7%',
+            width: '100%',
+            marginBottom: '100px',
         },
     }),
 );
@@ -91,14 +99,16 @@ const Orders = (props: IProps): JSX.Element => {
                 ORDERS
             </Typography>
 
-            {/* ORDERS OUTPUT */}
-            {ordersOutput.length > 0 ? (
-                ordersOutput
-            ) : (
-                <Typography variant="h6" component="span" color="secondary">
-                    Not orders yet
-                </Typography>
-            )}
+            <div className={classes.management}>
+                {/* ORDERS OUTPUT */}
+                {ordersOutput.length > 0 ? (
+                    ordersOutput
+                ) : (
+                    <Typography variant="h6" component="span" color="secondary">
+                        No orders yet
+                    </Typography>
+                )}
+            </div>
             <Button
                 variant="contained"
                 color="primary"

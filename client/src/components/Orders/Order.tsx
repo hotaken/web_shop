@@ -12,10 +12,16 @@ const useStyles = makeStyles((theme) =>
         root: {
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
             alignItems: 'center',
+            justifyContent: 'space-between',
+            width: '400px',
             marginTop: '20px',
-            width: '800px',
+            boxSizing: 'border-box',
+            border: `3px solid black`,
+            borderRadius: '20px',
+            padding: '10px',
+            margin: '1% 1% 1% 1%',
+            backgroundColor: 'rgba(255,255, 255, 0.7)',
         },
         amount: {
             marginTop: '10px',
@@ -24,6 +30,12 @@ const useStyles = makeStyles((theme) =>
             color: 'red',
             borderColor: 'red',
             marginTop: '10px',
+        },
+        downTab: {
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            alignItems: 'center',
         },
     }),
 );
@@ -41,20 +53,22 @@ const Order = (props: IProps): JSX.Element => {
 
     return (
         <div className={classes.root}>
-            <Burger ingredients={ingredients} />
+            <Burger ingredients={ingredients} heightElem="10px" />
 
-            <Typography className={classes.amount} variant="h6" component="span" color="secondary">
-                Amount: {amount}
-            </Typography>
+            <div className={classes.downTab}>
+                <Typography className={classes.amount} variant="h6" component="span">
+                    Amount: {amount}
+                </Typography>
 
-            {/* DELETE BUTTON */}
-            <Button
-                className={classes.deleteButton}
-                variant="outlined"
-                onClick={() => deleteOrder({ orderID })}
-            >
-                Delete
-            </Button>
+                {/* DELETE BUTTON */}
+                <Button
+                    className={classes.deleteButton}
+                    variant="outlined"
+                    onClick={() => deleteOrder({ orderID })}
+                >
+                    Delete
+                </Button>
+            </div>
         </div>
     );
 };
