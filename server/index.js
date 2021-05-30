@@ -28,7 +28,7 @@ let db = new sqlite3.Database(path.join('server/dataBase.sqlite'), (err) => {
         return console.log(err.message);
     }
     console.log('Connected to server/dataBase.sqlite');
-    console.log(_dirname);
+    console.log(__dirname);
 });
 
 app.get('/api/getBurgerList', function (request, response) {
