@@ -12,14 +12,14 @@ app.get('/api', (req, res) => {
 console.log(__dirname);
 
 //Подключение к БД
-let db = new sqlite3.Database(path.join('server/dataBase.sqlite'), (err) => {
+let db = new sqlite3.Database('server/database.sqlite', (err) => {
     if (err) {
         console.log('-------------------------------');
         console.log(__dirname);
         console.log(err.message);
         return console.log(err.message);
     }
-    console.log('Connected to server/dataBase.sqlite');
+    console.log('Connected to server/database.sqlite');
     console.log(__dirname);
 });
 
