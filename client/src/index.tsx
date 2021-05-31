@@ -24,7 +24,7 @@ ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
             <ThemeProvider theme={theme}>
-                <SnackbarProvider maxSnack={3}>
+                <SnackbarProvider maxSnack={1}>
                     <Router>
                         <App />
                     </Router>

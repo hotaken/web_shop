@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) =>
             flexWrap: 'wrap',
             padding: '4%',
             width: '92%',
-            marginBottom: '100px',
+            // marginBottom: '30px',
         },
     }),
 );
@@ -112,7 +112,7 @@ const Orders = (props: IProps): JSX.Element => {
             <Button
                 variant="contained"
                 color="primary"
-                style={{ marginTop: '20px' }}
+                style={{ marginBottom: '20px' }}
                 onClick={() => setOpenConfirmationState(() => true)}
             >
                 Confirm order
