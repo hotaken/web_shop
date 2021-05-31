@@ -1,5 +1,5 @@
 # web_shop
-Simple(no) shop cite
+Simple(no) shop site
 
 Frontend written in TypeScript, uses React.
 
